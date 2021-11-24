@@ -7,9 +7,11 @@ fuelRequired mass = floor ((fromIntegral mass) / 3.0) - 2
 -- test part1
 cases = [(12,2),(14,2),(1969,654),(100756,33583)]
 
-test :: [(Int,Int)] -> Bool -> Bool
-test [] acc = acc
-test ((a, b):xs) acc = test xs (fuelRequired a == b && acc)
+pass :: (Int,Int) -> Bool
+pass (a, b) = fuelRequired a == b
+
+test2 = all (== True) (map pass cases)
+
 
 -- 3384232
 part1 :: IO Int
