@@ -11,8 +11,7 @@ test :: [(Int,Int)] -> Bool -> Bool
 test [] acc = acc
 test ((a, b):xs) acc = test xs (fuelRequired a == b && acc)
 
--- fr :: Int -> Int -> Int
-
+-- 3384232
 part1 :: IO Int
 part1 = do
   content <- readFile("aoc-input-1.txt")
