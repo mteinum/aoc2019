@@ -1,0 +1,15 @@
+cabal-version: 2.4
+name: AdventOfCode2019
+version: 1.0
+author: Morten Teinum
+stability: experimental
+x-ghc-framework-version: 8.6.4-13.14-3
+x-last-ide-version: HfM1.8.2
+data-files:
+    aoc-input-1.txt
+
+executable Day1
+    main-is: Main.hs
+    default-language: Haskell2010
+    build-depends:
+        base -any
