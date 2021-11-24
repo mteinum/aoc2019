@@ -14,15 +14,16 @@ pass (a, b) = fuelRequired a == b
 
 testPart1 = all (== True) (map pass cases)
 
+readFileIntLines :: IO [Int]
+readFileIntLines = do
+  content <- readFile("aoc-input-1.txt")
+  return (map read . lines $ content)
 
 -- 3384232
 part1 :: IO Int
 part1 = do
-  content <- readFile("aoc-input-1.txt")
-  let answer = sum .
-               map fuelRequired .
-               map read .
-               lines $ content
+  content <- readFileIntLines
+  let answer = sum . map fuelRequired $ content
   return (answer)
   
 --
@@ -31,20 +32,17 @@ part1 = do
 -- 5073456
 --
 
--- fuelRequired2 :: Int -> Int -> Int
+fuelRequired2_ :: Int -> [Int] -> Int
 fuelRequired2_ mass acc
   | fuel <= 0 = sum acc
   | otherwise = fuelRequired2_ fuel (fuel:acc)
   where fuel = fuelRequired mass
 
+fuelRequired2 :: Int -> Int
 fuelRequired2 mass = fuelRequired2_ mass []
   
 part2 :: IO Int
 part2 = do
-  content <- readFile("aoc-input-1.txt")
-  let answer = sum .
-               map fuelRequired2 .
-               map read .
-               lines $ content
+  content <- readFileIntLines
+  let answer = sum . map fuelRequired2 $ content
   return (answer)
-  
